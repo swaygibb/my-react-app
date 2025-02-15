@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { logout } from "../api/auth";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
-const API_URL = "http://localhost:3000";
 
 const Dashboard = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -33,7 +30,13 @@ const Dashboard = () => {
         ) : (
           <p className="text-xl text-center text-gray-500">Loading...</p>
         )}
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
+          <button
+            onClick={() => navigate("/reports")}
+            className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            View Reports
+          </button>
           <button
             onClick={() => {
               logout();
