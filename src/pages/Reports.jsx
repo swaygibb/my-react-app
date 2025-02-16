@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { logout } from "../api/auth";
 
-const API_BASE_URL = "http://localhost:3000";
-const AUTH_TOKEN = "1234567890";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
