@@ -21,5 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install crypto-polyfill
+        run: npm install crypto
+
       - name: Run tests with npx vitest
         run: npx vitest
