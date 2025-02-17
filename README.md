@@ -10,3 +10,6 @@
 
 ![image](https://github.com/user-attachments/assets/babaf10a-adfe-4187-87bf-b232e8a87ebc)
 
+## Tests
+
+npx vitest
