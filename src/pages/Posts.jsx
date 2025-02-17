@@ -21,6 +21,9 @@ const Posts = () => {
     const fetchPosts = async () => {
       try {
         const response = await apiClient.get("/posts");
+
+        console.log("Posts fetched:", response.data);
+
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching posts:", error);

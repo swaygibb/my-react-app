@@ -6,3 +6,6 @@
 
 ![image](https://github.com/user-attachments/assets/0933f6f4-0e92-424a-8195-1e23f17d7dcb)
 
+## Tests
+
+npx vitest
