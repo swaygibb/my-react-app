@@ -23,8 +23,6 @@ const PostDetail = () => {
       try {
         const response = await apiClient.get(`/posts/${postId}`);
 
-        console.log("SGTEST response", response);
-
         setPost(response.data);
       } catch (error) {
         console.error("Error fetching post:", error);
