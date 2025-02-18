@@ -97,7 +97,7 @@ const Reports = () => {
                         {order.order_number}
                       </td>
                       <td className="border border-gray-300 px-4 py-2 text-center">
-                        ${order.total_price}
+                        {order.formatted_total_price}
                       </td>
                       <td className="border border-gray-300 px-4 py-2 text-center">
                         {order.currency}
