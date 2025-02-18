@@ -21,7 +21,9 @@ const Signup = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg space-y-6">
-        <h2 className="text-3xl font-bold text-center text-gray-800">Sign Up</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800">
+          Sign Up
+        </h2>
         {error && <p className="text-red-500 text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
