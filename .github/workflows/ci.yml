@@ -13,14 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run ESLint
         run: npx eslint .
 
       - name: Run Prettier Check
         run: npx prettier --check .
-
-      - name: Install dependencies
-        run: npm install
 
       - name: Install crypto-polyfill
         run: npm install crypto
