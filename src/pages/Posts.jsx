@@ -47,7 +47,9 @@ const Posts = () => {
                   onClick={() => navigate(`/posts/${post.id}`)}
                 >
                   <h3 className="text-xl font-semibold">{post.title}</h3>
-                  <p className="text-gray-600">{post.body.substring(0, 100)}...</p>
+                  <p className="text-gray-600">
+                    {post.body.substring(0, 100)}...
+                  </p>
                 </li>
               ))
             ) : (

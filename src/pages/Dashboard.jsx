@@ -12,7 +12,7 @@ const Dashboard = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (!user) throw new Error("No user found");
         setCurrentUser(user);
-      } catch (error) {
+      } catch {
         logout();
         navigate("/login");
       }
@@ -24,9 +24,13 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
       <div className="w-full max-w-lg p-8 bg-white rounded-lg shadow-lg space-y-6">
-        <h2 className="text-3xl font-bold text-center text-gray-800">Dashboard</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800">
+          Dashboard
+        </h2>
         {currentUser ? (
-          <p className="text-xl text-center text-gray-700">Welcome, {currentUser.email}</p>
+          <p className="text-xl text-center text-gray-700">
+            Welcome, {currentUser.email}
+          </p>
         ) : (
           <p className="text-xl text-center text-gray-500">Loading...</p>
         )}

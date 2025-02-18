@@ -1,19 +1,19 @@
-import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
-import Dashboard from './Dashboard';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen } from "@testing-library/react";
+import { vi, describe, beforeEach, test, expect } from "vitest";
+import Dashboard from "./Dashboard";
+import { MemoryRouter } from "react-router-dom";
 
-vi.mock('../api/auth', () => ({
+vi.mock("../api/auth", () => ({
   logout: vi.fn(),
 }));
 
-describe('Dashboard', () => {
+describe("Dashboard", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  test('renders loading state when no user is found in localStorage', async () => {
-    Object.defineProperty(window, 'localStorage', {
+  test("renders loading state when no user is found in localStorage", async () => {
+    Object.defineProperty(window, "localStorage", {
       value: {
         getItem: vi.fn().mockReturnValue(null),
       },
@@ -23,15 +23,15 @@ describe('Dashboard', () => {
     render(
       <MemoryRouter>
         <Dashboard />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
   });
 
-  test('renders user email when user is found in localStorage', async () => {
-    const mockUser = { email: 'user@example.com' };
-    Object.defineProperty(window, 'localStorage', {
+  test("renders user email when user is found in localStorage", async () => {
+    const mockUser = { email: "user@example.com" };
+    Object.defineProperty(window, "localStorage", {
       value: {
         getItem: vi.fn().mockReturnValue(JSON.stringify(mockUser)),
       },
@@ -41,7 +41,7 @@ describe('Dashboard', () => {
     render(
       <MemoryRouter>
         <Dashboard />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText(/Welcome, user@example.com/i)).toBeInTheDocument();

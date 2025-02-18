@@ -1,10 +1,10 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import Posts from './Posts';
-import { vi } from 'vitest';
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import Posts from "./Posts";
+import { vi, test, expect } from "vitest";
 
-test('displays message when no posts are found', async () => {
-  vi.mock('axios', () => ({
+test("displays message when no posts are found", async () => {
+  vi.mock("axios", () => ({
     default: {
       create: vi.fn().mockReturnValue({
         get: vi.fn().mockResolvedValue({ data: [] }),
@@ -13,11 +13,11 @@ test('displays message when no posts are found', async () => {
   }));
 
   render(
-    <MemoryRouter initialEntries={['/posts']}>
+    <MemoryRouter initialEntries={["/posts"]}>
       <Routes>
         <Route path="/posts" element={<Posts />} />
       </Routes>
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   expect(screen.getByText(/No posts found/i)).toBeInTheDocument();

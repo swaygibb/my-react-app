@@ -13,7 +13,9 @@ const apiClient = axios.create({
 
 export const login = async (email, password) => {
   try {
-    const response = await apiClient.post("/users/sign_in", { user: { email, password } });
+    const response = await apiClient.post("/users/sign_in", {
+      user: { email, password },
+    });
     return response.data;
   } catch (error) {
     console.error("Login failed", error);
@@ -23,7 +25,9 @@ export const login = async (email, password) => {
 
 export const register = async (email, password) => {
   try {
-    const response = await apiClient.post("/users", { user: { email, password } });
+    const response = await apiClient.post("/users", {
+      user: { email, password },
+    });
     return response.data;
   } catch (error) {
     console.error("Signup failed", error);

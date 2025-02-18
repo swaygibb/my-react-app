@@ -1,12 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import Home from './Home';
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import Home from "./Home";
+import { test, expect } from "vitest";
 
-test('renders Home component and checks for essential content', () => {
+test("renders Home component and checks for essential content", () => {
   render(
     <MemoryRouter>
       <Home />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   expect(screen.getByText(/Welcome to My React App/i)).toBeInTheDocument();

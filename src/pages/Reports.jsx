@@ -25,7 +25,7 @@ const Reports = () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
         if (!user) throw new Error("No user found");
-      } catch (error) {
+      } catch {
         logout();
         navigate("/login");
       }
@@ -62,33 +62,46 @@ const Reports = () => {
     fetchOrders();
     fetchCustomers();
     fetchProducts();
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-5xl p-8 bg-white rounded-lg shadow-lg space-y-8">
-        <h2 className="text-3xl font-bold text-center text-gray-800">Reports</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800">
+          Reports
+        </h2>
 
-        {/* Orders Section */}
         <div>
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">Recent Orders</h3>
+          <h3 className="text-2xl font-semibold text-gray-700 mb-4">
+            Recent Orders
+          </h3>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse border border-gray-300">
               <thead>
                 <tr className="bg-gray-200">
                   <th className="border border-gray-300 px-4 py-2">Order #</th>
-                  <th className="border border-gray-300 px-4 py-2">Total Price</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Total Price
+                  </th>
                   <th className="border border-gray-300 px-4 py-2">Currency</th>
-                  <th className="border border-gray-300 px-4 py-2">Created At</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Created At
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {orders.length > 0 ? (
                   orders.map((order) => (
                     <tr key={order.id} className="hover:bg-gray-100">
-                      <td className="border border-gray-300 px-4 py-2 text-center">{order.order_number}</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">${order.total_price}</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">{order.currency}</td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        {order.order_number}
+                      </td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        ${order.total_price}
+                      </td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        {order.currency}
+                      </td>
                       <td className="border border-gray-300 px-4 py-2 text-center">
                         {new Date(order.created_at).toLocaleString()}
                       </td>
@@ -96,7 +109,10 @@ const Reports = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="4" className="border border-gray-300 px-4 py-2 text-center text-gray-500">
+                    <td
+                      colSpan="4"
+                      className="border border-gray-300 px-4 py-2 text-center text-gray-500"
+                    >
                       No orders found
                     </td>
                   </tr>
@@ -108,14 +124,20 @@ const Reports = () => {
 
         {/* Customers Section */}
         <div>
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">Recent Customers</h3>
+          <h3 className="text-2xl font-semibold text-gray-700 mb-4">
+            Recent Customers
+          </h3>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse border border-gray-300">
               <thead>
                 <tr className="bg-gray-200">
-                  <th className="border border-gray-300 px-4 py-2">Customer Name</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Customer Name
+                  </th>
                   <th className="border border-gray-300 px-4 py-2">Email</th>
-                  <th className="border border-gray-300 px-4 py-2">Created At</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Created At
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -125,7 +147,9 @@ const Reports = () => {
                       <td className="border border-gray-300 px-4 py-2 text-center">
                         {customer.first_name} {customer.last_name}
                       </td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">{customer.email}</td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        {customer.email}
+                      </td>
                       <td className="border border-gray-300 px-4 py-2 text-center">
                         {new Date(customer.created_at).toLocaleString()}
                       </td>
@@ -133,7 +157,10 @@ const Reports = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="3" className="border border-gray-300 px-4 py-2 text-center text-gray-500">
+                    <td
+                      colSpan="3"
+                      className="border border-gray-300 px-4 py-2 text-center text-gray-500"
+                    >
                       No customers found
                     </td>
                   </tr>
@@ -145,15 +172,21 @@ const Reports = () => {
 
         {/* Products Section */}
         <div>
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">Products</h3>
+          <h3 className="text-2xl font-semibold text-gray-700 mb-4">
+            Products
+          </h3>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse border border-gray-300">
               <thead>
                 <tr className="bg-gray-200">
                   <th className="border border-gray-300 px-4 py-2">Product</th>
                   <th className="border border-gray-300 px-4 py-2">Vendor</th>
-                  <th className="border border-gray-300 px-4 py-2">Inventory</th>
-                  <th className="border border-gray-300 px-4 py-2">Created At</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Inventory
+                  </th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Created At
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -163,8 +196,12 @@ const Reports = () => {
                       <td className="border border-gray-300 px-4 py-2 text-center">
                         {product.title}
                       </td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">{product.vendor}</td>
-                      <td className="border border-gray-300 px-4 py-2 text-center">{product.inventory_quantity}</td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        {product.vendor}
+                      </td>
+                      <td className="border border-gray-300 px-4 py-2 text-center">
+                        {product.inventory_quantity}
+                      </td>
                       <td className="border border-gray-300 px-4 py-2 text-center">
                         {new Date(product.created_at).toLocaleString()}
                       </td>
@@ -172,7 +209,10 @@ const Reports = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="3" className="border border-gray-300 px-4 py-2 text-center text-gray-500">
+                    <td
+                      colSpan="3"
+                      className="border border-gray-300 px-4 py-2 text-center text-gray-500"
+                    >
                       No products found
                     </td>
                   </tr>
