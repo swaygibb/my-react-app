@@ -33,7 +33,7 @@ const Reports = () => {
 
     const fetchOrders = async () => {
       try {
-        const response = await apiClient.get("/orders");
+        const response = await apiClient.get("/api/v1/orders");
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -42,7 +42,7 @@ const Reports = () => {
 
     const fetchCustomers = async () => {
       try {
-        const response = await apiClient.get("/customers");
+        const response = await apiClient.get("/api/v1/customers");
         setCustomers(response.data);
       } catch (error) {
         console.error("Error fetching customers:", error);
@@ -51,7 +51,7 @@ const Reports = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await apiClient.get("/products");
+        const response = await apiClient.get("/api/v1/products");
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);

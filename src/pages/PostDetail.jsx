@@ -21,7 +21,7 @@ const PostDetail = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await apiClient.get(`/posts/${postId}`);
+        const response = await apiClient.get(`/api/v1/posts/${postId}`);
 
         setPost(response.data);
       } catch (error) {
