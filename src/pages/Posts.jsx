@@ -20,7 +20,7 @@ const Posts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await apiClient.get("/posts");
+        const response = await apiClient.get("/api/v1/posts");
 
         console.log("Posts fetched:", response.data);
 
